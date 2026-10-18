@@ -1,6 +1,6 @@
 # Parallel Computing Demonstration Application & Simulation Suite
 
-A Python-based desktop application for exploring **parallel processing, multiprocessor architectures, processor scheduling, bus communication, cache coherence, and performance analysis**.
+A Python-based desktop application and simulation suite for exploring **parallel processing, multiprocessor architectures, processor scheduling, bus communication, cache coherence, and performance evaluation**.
 
 This project was developed as the final group project for **IE2064 – Advanced Computer Organization and Architecture** at the **Sri Lanka Institute of Information Technology (SLIIT)**.
 
@@ -8,24 +8,25 @@ This project was developed as the final group project for **IE2064 – Advanced 
 
 ## 📌 Project Overview
 
-The application provides a unified, menu-driven graphical interface built with **Tkinter**. Each module demonstrates a core concept in parallel and multiprocessor computing through configurable simulations, performance measurements, and visual analysis.
+The application provides a unified, menu-driven graphical interface built with **Tkinter**. It combines five simulation modules that demonstrate how parallel systems distribute work, communicate, coordinate memory access, and scale across processing units.
 
-The project connects theoretical concepts with practical experimentation by comparing execution strategies, observing resource contention, and evaluating how performance changes as parallelism increases.
+The repository also includes benchmark diagrams, the complete Python source code, and the final academic report.
 
 ---
 
-## 🚀 Main Features
+## 🚀 Key Features
 
-- Interactive desktop GUI with independent simulation modules
-- Comparison of sequential, threaded, and multiprocess execution
+- Interactive Tkinter desktop GUI
+- Sequential, multithreaded, and multiprocessing comparisons
 - Demonstration of Python's Global Interpreter Lock (GIL)
 - Static and dynamic processor-load balancing experiments
 - Shared-bus contention and arbitration simulation
-- MESI cache-coherence state-transition visualization
-- False-sharing, true-sharing, and cache-aligned experiments
-- Speedup and efficiency analysis using Amdahl's Law
+- MESI cache-coherence state-transition simulation
+- False-sharing, true-sharing, and cache-aligned memory experiments
+- Execution-time, speedup, and efficiency analysis
+- Amdahl's Law comparison
 - CPU and system telemetry monitoring
-- Matplotlib-based performance charts and visualizations
+- Matplotlib-based benchmark visualizations
 
 ---
 
@@ -33,38 +34,28 @@ The project connects theoretical concepts with practical experimentation by comp
 
 ### 1. Parallelism Module — ILP, TLP, and DLP
 
-Compares multiple execution approaches for CPU-bound workloads:
+Compares CPU-bound workload execution using:
 
-- Sequential execution
+- Sequential processing
 - Multithreading
 - Multiprocessing
 
-This module demonstrates the effect of Python's **Global Interpreter Lock (GIL)** and shows why multiprocessing can provide genuine CPU-level parallelism for suitable workloads.
-
-The module introduces three important forms of parallelism:
-
-- **Instruction-Level Parallelism (ILP):** Executing independent instructions concurrently
-- **Thread-Level Parallelism (TLP):** Executing multiple software threads
-- **Data-Level Parallelism (DLP):** Applying the same operation to multiple data elements
+The module demonstrates the effect of Python's **Global Interpreter Lock (GIL)** and explains why multiprocessing can provide genuine parallel execution for CPU-bound tasks.
 
 ### 2. Processor Scheduling Module
 
-Evaluates processor scheduling strategies using heterogeneous workloads:
+Evaluates processor scheduling and load-balancing strategies using heterogeneous workloads:
 
 - Static load balancing
 - Dynamic load balancing
 - Task distribution across processing units
-- Core utilization and idle-time behavior
-
-The experiments illustrate how dynamic scheduling can improve utilization when tasks have different execution times.
+- Processor utilization and idle-time behavior
 
 ### 3. Bus and Communication Module
 
-Simulates a shared bus used by multiple processing cores and evaluates the effect of communication contention.
+Simulates a shared bus accessed by multiple processing cores. The module examines:
 
-The module explores:
-
-- Shared-bus access requests
+- Bus access requests
 - Multi-core contention
 - Arbitration strategies
 - Transfer-time variation
@@ -72,41 +63,30 @@ The module explores:
 
 ### 4. Cache Coherence Module — MESI Protocol
 
-Demonstrates memory-level interactions using the **MESI cache-coherence protocol**:
+Demonstrates memory interactions using the **MESI cache-coherence protocol**:
 
 - **M — Modified**
 - **E — Exclusive**
 - **S — Shared**
 - **I — Invalid**
 
-The module includes experiments involving:
-
-- False sharing
-- True sharing with mutex synchronization
-- Cache-aligned or padded data structures
-- Bus transactions
-- Cache invalidation penalties
-- Interactive MESI state transitions
-
-These experiments help demonstrate how cache-line sharing and synchronization overhead can affect multiprocessor performance.
+The module explores false sharing, true sharing with mutex synchronization, cache-aligned data, bus transactions, and cache invalidation penalties.
 
 ### 5. Performance Evaluation Module
 
-Combines measured results from the other modules and provides performance analysis through:
+Aggregates and visualizes performance results using:
 
 - Execution-time comparisons
 - Speedup calculations
-- Parallel efficiency calculations
+- Parallel-efficiency calculations
 - Processor-count comparisons
 - Amdahl's Law analysis
 - CPU and system telemetry
-- Matplotlib-based performance graphs
+- Matplotlib performance graphs
 
 ---
 
 ## 📐 Performance Metrics
-
-The application evaluates parallel performance using commonly used metrics.
 
 ### Speedup
 
@@ -122,18 +102,13 @@ Efficiency = Speedup / Number of Processing Units
 
 ### Amdahl's Law
 
-Amdahl's Law is used to estimate the theoretical speedup limit when only part of a workload can be parallelized:
-
 ```text
 Speedup(N) = 1 / ((1 - P) + (P / N))
 ```
 
-Where:
+Where `P` is the parallelizable portion of the workload and `N` is the number of processing units.
 
-- `P` is the parallelizable portion of the workload
-- `N` is the number of processing units
-
-The comparison between theoretical and measured results highlights the effects of overhead, synchronization, communication, scheduling, and hardware limitations.
+Measured results may differ from theoretical results because of process-creation overhead, synchronization, communication, scheduling, memory access, and hardware limitations.
 
 ---
 
@@ -141,90 +116,148 @@ The comparison between theoretical and measured results highlights the effects o
 
 | Category | Technologies |
 |---|---|
-| Programming language | Python 3.10 or later |
+| Programming language | Python 3.10+ |
 | GUI framework | Tkinter |
-| Concurrency and parallelism | `multiprocessing`, `threading`, `concurrent.futures` |
+| Parallel execution | `multiprocessing`, `threading`, `concurrent.futures` |
 | Numerical computing | NumPy |
 | Benchmarking | `time.perf_counter()` |
 | System monitoring | psutil |
-| Data visualization | Matplotlib |
-| Low-level memory experiments | `ctypes` |
+| Visualization | Matplotlib |
+| Shared-memory experiments | `ctypes` |
 
 ---
 
-## ⚙️ Requirements
+## ⚙️ Installation
+
+### Requirements
 
 - Python **3.10 or later**
-- A desktop environment capable of running Tkinter
-- The Python packages used by the project, including:
-  - NumPy
-  - psutil
-  - Matplotlib
+- A desktop environment with Tkinter support
+- NumPy
+- psutil
+- Matplotlib
 
-The exact execution command and dependency file may vary depending on the project structure. Install the required packages before launching the application.
-
-Example package installation:
+Install the required Python packages with:
 
 ```bash
 pip install numpy psutil matplotlib
 ```
 
-> **Note:** Tkinter is commonly included with standard Python installations. On some Linux distributions, it may need to be installed separately through the operating system's package manager.
+> On some Linux distributions, Tkinter may need to be installed separately through the operating system's package manager.
 
 ---
 
 ## ▶️ Running the Application
 
-1. Clone or download the repository.
-2. Open a terminal in the project directory.
-3. Install the required Python packages.
-4. Run the main Python application file.
-5. Select a simulation module from the graphical interface.
-6. Configure the experiment and compare the measured results.
+The main application entry point is located in the `IE2064_Group_2_Code` directory.
 
-Because the repository may contain multiple Python modules, run the project's designated main or GUI entry-point file.
+From the repository root, run:
+
+```bash
+python IE2064_Group_2_Code/main.py
+```
+
+Then select the required simulation module from the graphical interface.
+
+On Windows, the following command may also be used:
+
+```bash
+py IE2064_Group_2_Code/main.py
+```
 
 ---
 
-## 📊 Expected Results
+## 📁 Repository Structure
 
-The simulations are intended to demonstrate that:
+```text
+Design-and-Performance-Analysis-of-Parallel-Processing-and-Multiprocessor-Architectures/
+│
+├── Benchmark Diagrams/
+│   ├── GUI.png
+│   ├── Module 1.png
+│   ├── benchmark_comparison.png
+│   ├── graph1_execution_time.png
+│   ├── graph2_overhead.png
+│   ├── graph3_comparison.png
+│   ├── module2_plot.png
+│   ├── module3_plot.png
+│   ├── module4_cache_analysis.png
+│   ├── module4_plot.png
+│   ├── module5_plot.png
+│   ├── scaling_analysis.png
+│   └── Additional architecture and benchmark diagrams
+│
+├── IE2064_Group_2_Code/
+│   ├── main.py                    # Main Tkinter application
+│   ├── module1.py                 # Module 1 interface/support code
+│   ├── module1_parallelism.py     # ILP, TLP, and DLP experiments
+│   ├── module2.py                 # Module 2 interface/support code
+│   ├── module2_scheduling.py      # Processor scheduling experiments
+│   ├── module3.py                 # Module 3 interface/support code
+│   ├── module3_bus.py             # Bus and communication simulation
+│   ├── module4.py                 # Module 4 interface/support code
+│   ├── module4_cache.py           # MESI and cache-coherence simulation
+│   ├── module5.py                 # Module 5 interface/support code
+│   └── module5_evaluation.py      # Performance evaluation and visualization
+│
+├── Report/
+│   └── Group No. 02 - ACOA - Final Assignment report.pdf
+│
+└── README.md
+```
+
+> The `__pycache__` directory contains automatically generated Python bytecode and is not part of the source-code documentation.
+
+---
+
+## 📊 Benchmark Visualizations
+
+The [`Benchmark Diagrams`](./Benchmark%20Diagrams/) folder contains GUI captures, architecture diagrams, execution-time comparisons, overhead plots, cache-analysis results, module plots, and scaling-analysis graphs.
+
+Examples include:
+
+- [`GUI.png`](./Benchmark%20Diagrams/GUI.png)
+- [`Module 1.png`](./Benchmark%20Diagrams/Module%201.png)
+- [`benchmark_comparison.png`](./Benchmark%20Diagrams/benchmark_comparison.png)
+- [`graph1_execution_time.png`](./Benchmark%20Diagrams/graph1_execution_time.png)
+- [`graph2_overhead.png`](./Benchmark%20Diagrams/graph2_overhead.png)
+- [`graph3_comparison.png`](./Benchmark%20Diagrams/graph3_comparison.png)
+- [`module4_cache_analysis.png`](./Benchmark%20Diagrams/module4_cache_analysis.png)
+- [`scaling_analysis.png`](./Benchmark%20Diagrams/scaling_analysis.png)
+
+---
+
+## 📄 Project Report
+
+The final assignment report is available in the [`Report`](./Report/) folder:
+
+- [`Group No. 02 - ACOA - Final Assignment report.pdf`](./Report/Group%20No.%2002%20-%20ACOA%20-%20Final%20Assignment%20report.pdf)
+
+---
+
+## 📈 Expected Observations
+
+The simulations are designed to demonstrate that:
 
 - Multithreading may provide limited benefits for CPU-bound Python workloads because of the GIL.
 - Multiprocessing can improve CPU-bound performance by using separate processes.
-- Dynamic load balancing can reduce idle time for uneven workloads.
-- Shared-bus contention increases as more processing cores compete for communication resources.
+- Dynamic load balancing can reduce processor idle time for uneven workloads.
+- Shared-bus contention increases as more processors compete for communication resources.
 - False sharing can reduce performance even when threads modify logically independent variables.
 - Cache alignment and padding can reduce unnecessary cache-line invalidations.
 - Synchronization and communication overhead limit practical speedup.
 - Real-world performance generally falls below the ideal prediction of Amdahl's Law.
 
-Actual results depend on the operating system, Python version, processor architecture, number of cores, workload configuration, and system background activity.
+Actual benchmark results depend on the operating system, Python version, processor architecture, number of cores, workload size, and background system activity.
 
 ---
 
-## 📁 Suggested Repository Organization
-
-```text
-Design-and-Performance-Analysis-of-Parallel-Processing-and-Multiprocessor-Architectures/
-├── README.md                    # Project documentation
-├── *.py                         # GUI and simulation modules
-├── requirements.txt             # Optional Python dependency list
-├── diagrams/                    # Architecture and flow diagrams
-├── results/                     # Generated measurements and plots
-└── report/                      # Academic report and supporting material
-```
-
-> The actual repository structure may differ from this suggested organization.
-
----
-
-## 🎓 Academic Context
+## 🎓 Academic Information
 
 **Module:** IE2064 – Advanced Computer Organization and Architecture  
 **Programme:** Year 2, Semester 2  
 **Institution:** Sri Lanka Institute of Information Technology (SLIIT)  
-**Project type:** Group project and simulation suite
+**Project:** Group 02 final project
 
 ---
 
@@ -239,9 +272,7 @@ Design-and-Performance-Analysis-of-Parallel-Processing-and-Multiprocessor-Archit
 
 ---
 
-## 📚 References and Theoretical Foundation
-
-The project is based on established parallel-computing and computer-architecture concepts, including:
+## 📚 References
 
 - *X: A Comprehensive Analytic Model for Parallel Machines* (2016)
 - Hill, M. D., & Marty, M. R. — *Amdahl's Law in the Multicore Era* (2008)
@@ -249,15 +280,15 @@ The project is based on established parallel-computing and computer-architecture
 
 ---
 
-## ⚠️ Notes on Benchmarking
+## ⚠️ Benchmarking Notes
 
-Benchmark results should be interpreted comparatively rather than as fixed hardware-independent values. For more reliable comparisons:
+For more reliable comparisons:
 
 - Run each experiment multiple times.
 - Keep workload sizes consistent.
 - Close unnecessary background applications.
 - Record the processor model and number of available cores.
-- Compare results on the same machine and under similar system conditions.
+- Compare results on the same machine under similar system conditions.
 
 ---
 
