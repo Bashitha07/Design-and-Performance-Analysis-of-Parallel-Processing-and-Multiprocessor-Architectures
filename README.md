@@ -265,8 +265,8 @@ Actual benchmark results depend on the operating system, Python version, process
 
 | Name | IT Number |
 |---|---|
-| L. P. Jayasinghe | `IT24100888` |
 | B. A. Sellapperuma | `IT24103485` |
+| L. P. Jayasinghe | `IT24100888` |
 | M. F. V. Mihindukula | `IT24103486` |
 | K. G. A. D. Somarathna | `IT24103487` |
 
